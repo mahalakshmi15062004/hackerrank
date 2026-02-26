@@ -6,37 +6,35 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-class Result {
-
-   
-
+class date_time {
     public static String findDay(int month, int day, int year) {
-
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.MONTH,month-1);
-        cal.set(Calendar.DAY_OF_MONTH,day);
-        cal.set(Calendar.YEAR,year);
-String dayOfWeek = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US).toUpperCase();
-        return dayOfWeek;
-
+   
+        cal.set(year, month - 1, day);
+        
+       
+        return cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US).toUpperCase();
     }
-
 }
 
-public class Data_Time {
+public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        
+       
+        String outputPath = System.getenv("OUTPUT_PATH");
+        BufferedWriter bufferedWriter = (outputPath != null) ? 
+            new BufferedWriter(new FileWriter(outputPath)) : 
+            new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\s+$", "").split(" ");
+        String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
 
         int month = Integer.parseInt(firstMultipleInput[0]);
-
         int day = Integer.parseInt(firstMultipleInput[1]);
-
         int year = Integer.parseInt(firstMultipleInput[2]);
 
-        String res = Result.findDay(month, day, year);
+        
+        String res = date_time.findDay(month, day, year);
 
         bufferedWriter.write(res);
         bufferedWriter.newLine();
