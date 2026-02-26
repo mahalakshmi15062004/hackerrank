@@ -3,7 +3,7 @@ import java.util.*;
 class Solution{
 
     public static void main(String []args){
-        //Input
+    
         Scanner sc= new Scanner(System.in);
         int n=sc.nextInt();
         String []s=new String[n+2];
@@ -11,11 +11,7 @@ class Solution{
             s[i]=sc.next();
         }
       	sc.close();
-     
-   
-
-        //Write your code here
-        for(int i=1; i<n ; i++){
+     for(int i=1; i<n ; i++){
             for(int j=i; j>=1; j--){
 
                 if(new BigDecimal(s[j]).compareTo(new BigDecimal(s[j-1]))>0){   
@@ -28,13 +24,6 @@ class Solution{
                 }
             }  
         } 
-        
-
-        //Output
-     
-        //Write your code here
-
-        //Output
         for(int i=0;i<n;i++)
         {
             System.out.println(s[i]);
