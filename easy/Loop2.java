@@ -13,7 +13,7 @@ import java.util.*;
                 int o=1;
                 for(int j=0;j< n;j++)
                 {
-                 //for(int p=0;p< j;p++)
+              
                     r=(1<< j)*b;
                     sum=sum+r;
                     System.out.print(sum+" ");
