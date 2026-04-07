@@ -1,0 +1,52 @@
+import java.util.*;
+
+public class test {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Deque<Integer> deque = new ArrayDeque<Integer>();
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int maxUnique = 0;
+
+        for (int i = 0; i < n; i++) {
+            int num = in.nextInt();
+            
+            // Add new element to window
+            deque.addLast(num);
+            
+            // Java 7 replacement for getOrDefault
+            Integer count = map.get(num);
+            if (count == null) {
+                map.put(num, 1);
+            } else {
+                map.put(num, count + 1);
+            }
+
+            // Once the window reaches size m
+            if (deque.size() == m) {
+                // Check if current unique count (map size) is the new maximum
+                if (map.size() > maxUnique) {
+                    maxUnique = map.size();
+                }
+                
+                // Optimization: if maxUnique is already m, we can't do better
+                if (maxUnique == m) break;
+
+                // Prepare for next slide: remove the oldest element
+                int first = deque.removeFirst();
+                int firstCount = map.get(first);
+                
+                if (firstCount == 1) {
+                    map.remove(first);
+                } else {
+                    map.put(first, firstCount - 1);
+                }
+            }
+        }
+        
+        System.out.println(maxUnique);
+        in.close();
+    }
+}
