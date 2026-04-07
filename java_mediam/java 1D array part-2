@@ -24,11 +24,11 @@ public class Solution {
     }
 
     private static boolean isSolvable(int leap, int[] game, int i) {
-        // Base Cases
-        if (i >= game.length) return true; // Jumped off the end
-        if (i < 0 || game[i] == 1) return false; // Out of bounds or hit wall/visited
+       
+        if (i >= game.length) return true; 
+        if (i < 0 || game[i] == 1) return false; 
 
-        // Mark as visited to avoid infinite loops
+        
         game[i] = 1;
 
         // Recursive Step: Leap, Walk Forward, Walk Backward
